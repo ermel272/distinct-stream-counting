@@ -1,0 +1,10 @@
+List of reference links used so far in the project:
+
+Mining of Massive Data Sets
+- http://infolab.stanford.edu/~ullman/mmds/book.pdf
+
+Java Primitive Data Types
+- https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
+
+Java String HashCode Documentation
+- http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#hashCode()
