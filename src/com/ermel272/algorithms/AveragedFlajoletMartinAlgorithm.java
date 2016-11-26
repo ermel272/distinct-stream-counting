@@ -18,9 +18,6 @@ import java.util.ArrayList;
  */
 public class AveragedFlajoletMartinAlgorithm {
 
-    // Defines the number of bits in a Java int
-    private static final int MAX_BITS = 32;
-
     private ArrayList<Integer> maxTailLengths;
     private int maxBlockSize;
     private int currentBlockSize;
@@ -49,7 +46,7 @@ public class AveragedFlajoletMartinAlgorithm {
 
         // Accumulate the sum of the 2^maxTailLengths
         for (int i = 0; i < blockIndex + 1; i++) {
-            runningTotal += 2 ^ maxTailLengths.get(i);
+            runningTotal += Math.pow(2.0, (double) maxTailLengths.get(i));
         }
 
         // Return the average of all 2^maxTailLengths
@@ -101,14 +98,11 @@ public class AveragedFlajoletMartinAlgorithm {
      *          following the LS1B of the integer i.
      */
     private int findTailLength(int i) {
-        // Convert i to Integer to use unsigned integer
-        Integer i2 = i;
-
         // Compute number of trailing zeros
-        int tailLength = Integer.numberOfTrailingZeros(i2);
+        int tailLength = Integer.numberOfTrailingZeros(i);
 
         // If tailLength is 32, then report 0 as there is no LS1B
-        if (tailLength == MAX_BITS) tailLength = 0;
+        if (tailLength == 32) tailLength = 0;
 
         return tailLength;
     }

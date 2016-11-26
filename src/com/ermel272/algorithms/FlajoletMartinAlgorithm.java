@@ -37,7 +37,7 @@ public class FlajoletMartinAlgorithm {
      */
     public int reportDistinctElements() {
         // Report 2^maxTailLength
-        return 2^maxTailLength;
+        return (int) Math.pow(2.0, (double) maxTailLength);
     }
 
     /**
@@ -73,11 +73,8 @@ public class FlajoletMartinAlgorithm {
      *          following the LS1B of the integer i.
      */
     private int findTailLength(int i) {
-        // Convert i to Integer to use unsigned integer
-        Integer i2 = i;
-
         // Compute number of trailing zeros
-        int tailLength = Integer.numberOfTrailingZeros(i2);
+        int tailLength = Integer.numberOfTrailingZeros(i);
 
         // If tailLength is 32, then report 0 as there is no LS1B
         if (tailLength == MAX_BITS) tailLength = 0;

@@ -1,12 +1,12 @@
 package com.ermel272;
 
-import com.ermel272.algorithms.FlajoletMartinAlgorithm;
+import com.ermel272.controllers.StreamController;
 
 public class Main {
 
     public static void main(String[] args) {
-        FlajoletMartinAlgorithm fmAlg = new FlajoletMartinAlgorithm();
-
-        fmAlg.processInput("b");
+        // Instantiate and start the simulation
+        StreamController simulationController = new StreamController();
+        simulationController.startSimulation();
     }
 }
