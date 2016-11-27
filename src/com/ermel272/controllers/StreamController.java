@@ -38,6 +38,9 @@ public class StreamController {
         fmAlg = new FlajoletMartinAlgorithm();
         aFmAlg = new AveragedFlajoletMartinAlgorithm(1000);
 
+        // Print out csv column header
+        System.out.println("TweetCount,DistinctElements,FMAlg,AveragedFMAlg");
+
         StatusListener listener = new StatusListener() {
             @Override
             public void onStatus(Status status) {
