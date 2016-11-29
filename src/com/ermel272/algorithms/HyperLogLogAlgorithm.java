@@ -20,9 +20,9 @@ public class HyperLogLogAlgorithm {
 
     private static final int MAX_BITS = 32;
 
-    private int b = 4;
+    private int b = 11;
     private int m = (int) Math.pow(2.0, (double) b);    // Computes m = 2^b
-    private double alpha = 0.673;
+    private double alpha = 0.7213 / (1 + 1.079 / m);
 
     private int[] registers;
 
@@ -72,15 +72,25 @@ public class HyperLogLogAlgorithm {
         int x = s.hashCode();
 
         // Step 2: Compute binary address j determined by the first 4 bits of x
-        int j = 1 + (x >>> (MAX_BITS - b));
+        int j = x >>> (MAX_BITS - b);
 
         // Step 3: Zero out the first b bits of the x value to obtain w
         int w = (x << b) >>> b;
 
         // Step 4: Compute the position of the leftmost one-bit of w
-        int p = Integer.highestOneBit(w);
+        int p = findFirstOnePosition(w) - b;
 
         // Step 5: Replace the register m[j] if p is greater
         if (p > registers[j]) registers[j] = p;
+    }
+
+    private int findFirstOnePosition(int i) {
+        // Compute number of trailing zeros
+        int headLength = Integer.numberOfLeadingZeros(i);
+
+        // If tailLength is 32, then report 0 as there is no LS1B
+        if (headLength == MAX_BITS) headLength = 0;
+
+        return headLength + 1;
     }
 }

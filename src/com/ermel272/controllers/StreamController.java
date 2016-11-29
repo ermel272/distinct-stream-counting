@@ -23,6 +23,7 @@ public class StreamController {
     private AveragedFlajoletMartinAlgorithm aFmAlg;
     private FourByOneFlajoletMartinAlgorithm fourByOneFmAlg;
     private TwoByTwoFlajoletMartinAlgorithm twoByTwoFmAlg;
+    private HyperLogLogAlgorithm hyperLogAlg;
 
     private int tweetCount;
 
@@ -39,9 +40,10 @@ public class StreamController {
         aFmAlg = new AveragedFlajoletMartinAlgorithm(1000);
         fourByOneFmAlg = new FourByOneFlajoletMartinAlgorithm();
         twoByTwoFmAlg = new TwoByTwoFlajoletMartinAlgorithm();
+        hyperLogAlg = new HyperLogLogAlgorithm();
 
         // Print out csv column header
-        System.out.println("TweetCount,DistinctElements,FMAlg,AveragedFMAlg,FourByOneFMAlg,TwoByTwoFMAlg");
+        System.out.println("TweetCount,DistinctElements,FMAlg,AveragedFMAlg,FourByOneFMAlg,TwoByTwoFMAlg,HyperLogLogAlg");
 
         StatusListener listener = new StatusListener() {
             @Override
@@ -57,11 +59,13 @@ public class StreamController {
                 aFmAlg.processInput(userName);
                 fourByOneFmAlg.processInput(userName);
                 twoByTwoFmAlg.processInput(userName);
+                hyperLogAlg.processInput(userName);
 
                 // Step 3: Output current status of algorithm estimations
                 System.out.println(tweetCount + "," + detAlg.reportDistinctElements() + "," +
                         fmAlg.reportDistinctElements() + "," + aFmAlg.reportDistinctElements() + ","
-                        + fourByOneFmAlg.reportDistinctElements() + "," + twoByTwoFmAlg.reportDistinctElements());
+                        + fourByOneFmAlg.reportDistinctElements() + "," + twoByTwoFmAlg.reportDistinctElements()
+                        + "," + hyperLogAlg.reportDistinctElements());
             }
 
             @Override
