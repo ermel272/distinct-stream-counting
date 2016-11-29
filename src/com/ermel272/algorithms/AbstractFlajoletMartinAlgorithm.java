@@ -85,15 +85,15 @@ abstract class AbstractFlajoletMartinAlgorithm {
      * @return
      *          The median value of intArray.
      */
-    double computeMedian(int[] intArray) {
+    double computeMedian(double[] intArray) {
         // Verify sort doesn't change overarching maxTailLengths array
         Arrays.sort(intArray);
 
         double median;
         if (intArray.length % 2 == 0)
-            median = ((double)intArray[intArray.length/2] + (double)intArray[intArray.length/2 - 1])/2;
+            median = (intArray[intArray.length/2] + intArray[intArray.length/2 - 1])/2;
         else
-            median = (double) intArray[intArray.length/2];
+            median = intArray[intArray.length/2];
 
         return median;
     }

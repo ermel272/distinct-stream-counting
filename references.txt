@@ -8,3 +8,12 @@ Java Primitive Data Types
 
 Java String HashCode Documentation
 - http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#hashCode()
+
+Order Statistics and Estimating Cardinalities of massive Data Sets
+- https://www-sop.inria.fr/members/Frederic.Giroire/publis/Gi05.pdf
+
+HyperLogLog: the analysis of a near-optimal cardinality estimation algorithm
+- http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf
+
+HyperLogLog — Cornerstone of a Big Data Infrastructure
+- https://web.archive.org/web/20150323055945/http://research.neustar.biz/2012/10/25/sketch-of-the-day-hyperloglog-cornerstone-of-a-big-data-infrastructure/

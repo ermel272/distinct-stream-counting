@@ -1,8 +1,6 @@
 package com.ermel272.controllers;
 
-import com.ermel272.algorithms.AveragedFlajoletMartinAlgorithm;
-import com.ermel272.algorithms.DeterministicAlgorithm;
-import com.ermel272.algorithms.FlajoletMartinAlgorithm;
+import com.ermel272.algorithms.*;
 import com.ermel272.util.TwitterStreamUtil;
 import twitter4j.*;
 
@@ -23,6 +21,8 @@ public class StreamController {
     private DeterministicAlgorithm detAlg;
     private FlajoletMartinAlgorithm fmAlg;
     private AveragedFlajoletMartinAlgorithm aFmAlg;
+    private FourByOneFlajoletMartinAlgorithm fourByOneFmAlg;
+    private TwoByTwoFlajoletMartinAlgorithm twoByTwoFmAlg;
 
     private int tweetCount;
 
@@ -37,9 +37,11 @@ public class StreamController {
         detAlg = new DeterministicAlgorithm();
         fmAlg = new FlajoletMartinAlgorithm();
         aFmAlg = new AveragedFlajoletMartinAlgorithm(1000);
+        fourByOneFmAlg = new FourByOneFlajoletMartinAlgorithm();
+        twoByTwoFmAlg = new TwoByTwoFlajoletMartinAlgorithm();
 
         // Print out csv column header
-        System.out.println("TweetCount,DistinctElements,FMAlg,AveragedFMAlg");
+        System.out.println("TweetCount,DistinctElements,FMAlg,AveragedFMAlg,FourByOneFMAlg,TwoByTwoFMAlg");
 
         StatusListener listener = new StatusListener() {
             @Override
@@ -53,10 +55,13 @@ public class StreamController {
                 detAlg.processInput(userName);
                 fmAlg.processInput(userName);
                 aFmAlg.processInput(userName);
+                fourByOneFmAlg.processInput(userName);
+                twoByTwoFmAlg.processInput(userName);
 
                 // Step 3: Output current status of algorithm estimations
                 System.out.println(tweetCount + "," + detAlg.reportDistinctElements() + "," +
-                        fmAlg.reportDistinctElements() + "," + aFmAlg.reportDistinctElements());
+                        fmAlg.reportDistinctElements() + "," + aFmAlg.reportDistinctElements() + ","
+                        + fourByOneFmAlg.reportDistinctElements() + "," + twoByTwoFmAlg.reportDistinctElements());
             }
 
             @Override

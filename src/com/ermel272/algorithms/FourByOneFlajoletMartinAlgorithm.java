@@ -20,6 +20,12 @@ public class FourByOneFlajoletMartinAlgorithm extends AbstractFlajoletMartinAlgo
     @Override
     public double reportDistinctElements() {
         // As each group has one hash function, averages do not need to be taken
-        return computeMedian(maxTailLengths);
+        double[] averageValues = new double[4];
+        averageValues[0] = maxTailLengths[0];
+        averageValues[1] = maxTailLengths[1];
+        averageValues[2] = maxTailLengths[2];
+        averageValues[3] = maxTailLengths[3];
+
+        return Math.pow(2.0, computeMedian(averageValues));
     }
 }

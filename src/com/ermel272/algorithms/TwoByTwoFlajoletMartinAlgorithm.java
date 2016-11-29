@@ -20,11 +20,11 @@ public class TwoByTwoFlajoletMartinAlgorithm extends AbstractFlajoletMartinAlgor
     @Override
     public double reportDistinctElements() {
         // Find averages of both group of maxTailLengths
-        int[] averageValues = new int[2];
-        averageValues[0] = (maxTailLengths[0] + maxTailLengths[1]) / 2;
-        averageValues[1] = (maxTailLengths[2] + maxTailLengths[3]) / 2;
+        double[] averageValues = new double[2];
+        averageValues[0] = ((double) maxTailLengths[0] + (double) maxTailLengths[1]) / 2.0;
+        averageValues[1] = ((double) maxTailLengths[2] + (double) maxTailLengths[3]) / 2.0;
 
-        // Return median of the averages
-        return computeMedian(averageValues);
+        // Return median of the averages raised to the power 2
+        return Math.pow(2.0, computeMedian(averageValues));
     }
 }
